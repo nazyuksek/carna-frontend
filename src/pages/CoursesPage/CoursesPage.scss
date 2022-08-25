@@ -1,7 +1,6 @@
 .CoursesPage {
     display: flex;
-    width: 100%;
-    
+    width: 100%; 
     &__courses {
         padding: 3rem;   
         width: 100%;
@@ -18,6 +17,9 @@
         height: 100%;
         .course-cards-row {
             display: flex;
+            @media screen and (max-width: 1023px) {
+                flex-direction: column;
+            }
         }
     }
     .CourseCard {
@@ -30,9 +32,34 @@
         box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.25);
         border-radius: 5%;
         padding: 3%;
+        transition: 0.3s ease;
+        @media screen and (max-width: 1023px) {
+            width: 90%;
+            padding: 5%;
+        }
+        
         .course-and-title {
             display: flex;
             align-items: center;
+            @media screen and (max-width: 1023px) {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            .arrow-container-mobile {
+                @media screen and (min-width: 1024px) {
+                    display: none;
+                }
+                img {
+                    width: 90%;
+                    margin: 0 !important;
+                }
+            }
+            .img-and-name {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
             img {
                 margin-right: 1rem;
             }
@@ -48,8 +75,7 @@
                     margin-top: 5px;
                 }
 
-            }
-            
+            } 
         }
         .course-description-and-arrow {
             font-weight: 200;
@@ -64,6 +90,20 @@
             display: flex;
             margin-top: 1rem;
             justify-content: flex-end;
+            @media screen and (max-width: 1023px) {
+                display: none;
+            }
+            img {
+                transition: 0.3s ease;
+                
+            }
+            .arrow:hover {
+                transform: scale(1.15);
+            }
+            
         }
+    }
+    .CourseCard:hover {
+        background-color: rgba(77, 146, 251, 0.05);
     }
 }

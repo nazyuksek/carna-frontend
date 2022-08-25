@@ -19,10 +19,17 @@ const CoursesPage = () => {
         return (
             <div className="CourseCard">
                 <div className="course-and-title">
-                    <img src={image} alt="book" />
-                    <div>
-                        <span className="name">{courseName}</span>
-                        <span className="description">{description}</span>
+                    <div className="img-and-name">
+                        <img src={image} alt="book" />
+                        <div>
+                            <div>
+                                <span className="name">{courseName}</span>
+                                <span className="description">{description}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="arrow-container-mobile">
+                        <img className="arrow" src={ArrowIcon} alt="arrow" />
                     </div>
                 </div>
                 <div className="course-description-and-arrow">
@@ -32,7 +39,7 @@ const CoursesPage = () => {
                     </span>
                 </div>
                 <div className="arrow-container">
-                    <img src={ArrowIcon} alt="arrow" />
+                    <img className="arrow" src={ArrowIcon} alt="arrow" />
                 </div>
             </div>
         );
@@ -40,7 +47,6 @@ const CoursesPage = () => {
 
     return (
         <div className="CoursesPage" data-testid="CoursesPage">
-            <SideMenu></SideMenu>
             <div className="CoursesPage__courses">
                 <span className="CoursesPage__title">Courses</span>
                 <div className="course-cards-container">
