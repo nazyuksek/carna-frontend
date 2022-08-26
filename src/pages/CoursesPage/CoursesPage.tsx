@@ -12,10 +12,18 @@ interface CourseCardProps {
     image: string;
     courseName: string;
     description: string;
+    progress: number;
+    deadline: string;
 }
 
 const CoursesPage = () => {
-    const CourseCard = ({ image, courseName, description }: CourseCardProps) => {
+    const CourseCard = ({
+        image,
+        courseName,
+        description,
+        progress,
+        deadline
+    }: CourseCardProps) => {
         return (
             <div className="CourseCard">
                 <div className="course-and-title">
@@ -32,14 +40,20 @@ const CoursesPage = () => {
                         <img className="arrow" src={ArrowIcon} alt="arrow" />
                     </div>
                 </div>
-                <div className="course-description-and-arrow">
-                    <span>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Enim a sollicitudin
-                        amet, adipiscing purus. Enim purus in pharetra gravida tincidunt purus.
-                    </span>
+                <div className="progress-and-bar">
+                    <span>{progress}%</span>
+                    <div className="progress-bar">
+                        <div style={{ width: `${progress}%` }} className="progress"></div>
+                    </div>
                 </div>
-                <div className="arrow-container">
-                    <img className="arrow" src={ArrowIcon} alt="arrow" />
+                <div className="course-description-and-arrow">
+                    <div>
+                        <span className="deadline-title">Deadline: </span>
+                        <span className="deadline">{deadline}</span>
+                    </div>
+                    <div className="arrow-container">
+                        <img className="arrow" src={ArrowIcon} alt="arrow" />
+                    </div>
                 </div>
             </div>
         );
@@ -48,35 +62,45 @@ const CoursesPage = () => {
     return (
         <div className="CoursesPage" data-testid="CoursesPage">
             <div className="CoursesPage__courses">
-                <span className="CoursesPage__title">Courses</span>
+                <span className="CoursesPage__title">Assigned Courses</span>
                 <div className="course-cards-container">
                     <div className="course-cards-row">
                         <CourseCard
                             image={BlueBook}
-                            courseName="Course 01"
-                            description="Description"
+                            courseName="FAMILY AT THE AIRPORT"
+                            description="A1 Beginner Lesson 1"
+                            progress={5}
+                            deadline="1 Nov 22"
                         ></CourseCard>
                         <CourseCard
                             image={YellowBook}
-                            courseName="Course 02"
-                            description="Description"
+                            courseName="NATIONALITIES AND CONTINENTS"
+                            description="B2 Upper Intermediate Lesson 1"
+                            progress={22}
+                            deadline="2 Nov 22"
                         ></CourseCard>
                         <CourseCard
                             image={DarkGrayBook}
-                            courseName="Course 03"
-                            description="Description"
+                            courseName="PLACES AROUND THE WORLD"
+                            description="A2 Elementary Lesson 26"
+                            progress={48}
+                            deadline="8 Nov 22"
                         ></CourseCard>
                     </div>
                     <div className="course-cards-row">
                         <CourseCard
                             image={LightGrayBook}
-                            courseName="Course 04"
-                            description="Description"
+                            courseName="TRAVEL ABROAD"
+                            description="B1 Intermediate Lesson 1"
+                            progress={13}
+                            deadline="10 Nov 22"
                         ></CourseCard>
                         <CourseCard
                             image={BlueBook}
-                            courseName="Course 05"
-                            description="Description"
+                            courseName="ANGER CONTROL"
+                            description="C1 Advanced Lesson 1"
+                            progress={78}
+                            deadline="7 Nov 22"
                         ></CourseCard>
                     </div>
                 </div>

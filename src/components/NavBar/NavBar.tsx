@@ -27,9 +27,6 @@ const NavBar = ({ label }: NavBarProps) => {
     };
     return (
         <div className="NavBar" data-testid="NavBar">
-            <div className="NavBar__logo">
-                <img src={Logo} alt="logo" />
-            </div>
             <div onClick={() => setIsSlideOpen(!isSlideOpen)} className="NavBar__menu">
                 <AnimatePresence key="menuopen">
                     <motion.img
@@ -51,9 +48,9 @@ const NavBar = ({ label }: NavBarProps) => {
                     {isSlideOpen && (
                         <motion.div
                             animate={{ x: 0 }}
-                            initial={{ x: '100%' }}
+                            initial={{ x: '-100%' }}
                             exit={{
-                                x: '100%',
+                                x: '-100%',
                                 transition: {
                                     duration: 0.5
                                 }
@@ -129,6 +126,12 @@ const NavBar = ({ label }: NavBarProps) => {
                         </motion.div>
                     )}
                 </AnimatePresence>
+            </div>
+            <div className="logo">
+                <img src={Logo} alt="logo" />
+            </div>
+            <div className="logo-none">
+                <img src={Logo} alt="logo" />
             </div>
         </div>
     );

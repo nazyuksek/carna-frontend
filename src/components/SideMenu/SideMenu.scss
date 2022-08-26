@@ -49,17 +49,27 @@
         border-radius: 20px;
         padding: 0 8%;
         font-size: 0.85rem;
+        transition: 0.3s ease;
+
         //background-color: rgba(255, 223, 0, 0.1);
         .arrow-img {
             margin-top: 1rem;
             cursor: pointer;
+            transition: 0.3s ease;
         }
+        
         .book-img {
             position: absolute;
             top: -80px;
             left: -10px;
             z-index: 2;
         }
+    }
+    .app-card:hover {
+        background-color: rgba(77, 146, 251, 0.05);
+    }
+    .arrow-img:hover {
+        transform: scale(1.15);
     }
     .SideMenuItem {
         display: flex;
@@ -71,6 +81,7 @@
         cursor: pointer;
         img {
             margin: 0 1.75rem 0 2rem;
+            // transition: 0.1s ease;  
             width: 10%;
         }
         
@@ -84,6 +95,7 @@
         cursor: pointer;
         font-weight: 500;
         background-color: rgba(77, 146, 251, 0.1);
+        color: #4D92FB;
         img {
             margin: 0 1.75rem 0 2rem;
             width: 10%;

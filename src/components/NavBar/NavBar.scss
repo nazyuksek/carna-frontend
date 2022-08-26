@@ -10,29 +10,37 @@
     left: 0;
     z-index: 100;
     justify-content: space-between;
+    align-items: center;
     background-color: #ffffff;   
     @media screen and (min-width: 1024px) {
         display: none;
     }
-    &__logo {
+    .logo {
         margin-left: 8%;
+        @media screen and (max-width: 1023px) {
+            //margin-bottom: 3rem;
+            margin-left: 0;
+        }
         img {
             width: 70%;
         }
     }
+    .logo-none {
+        width: 0;
+        
+    }
+    
     &__menu {
         display: flex;
         align-items: center;
-        justify-content: flex-end;
-        
-
+        justify-content: space-between;
         .close-icon {
             position: absolute;
-            margin-right: 11%;
+            margin-left: 11%;
         }
         .hamburger-icon {
             position: absolute;
-            margin-right: 11%;
+            margin-left: 11%;
         }
         
     }
@@ -54,6 +62,7 @@
             flex-direction: column;
             justify-content: space-between;
             margin-right: 1rem;
+            height: 45%;
             .link {
                 margin-bottom: 1rem;
                 display: flex;
