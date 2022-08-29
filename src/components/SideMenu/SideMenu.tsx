@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './SideMenu.scss';
 import Logo from '../../assets/svg/Logo.svg';
 import HomeIcon from '../../assets/svg/home.svg';
@@ -34,6 +34,23 @@ const SideMenuItem = ({ image, text, isSelected, onClick }: SideMenuItemProps) =
 
 const SideMenu = ({ label }: SideMenuProps) => {
     const [selectedItem, setSelectedItem] = useState('home');
+    const [path, setPath] = useState<'/' | '/courses' | '/reports' | '/library'>('/');
+
+    useEffect(() => {
+        switch (location.pathname) {
+            case '/':
+                return setPath('/');
+            case '/courses':
+                return setPath('/courses');
+            case '/reports':
+                return setPath('/reports');
+            case '/library':
+                return setPath('/library');
+            default:
+                break;
+        }
+    }, [location]);
+
     return (
         <div className="SideMenu" data-testid="SideMenu">
             <div className="logo-container">
@@ -41,28 +58,40 @@ const SideMenu = ({ label }: SideMenuProps) => {
                 <span>Carna</span>
             </div>
             <SideMenuItem
-                image={selectedItem === 'home' ? HomeIconSelected : HomeIcon}
+                image={path === '/' ? HomeIconSelected : HomeIcon}
                 text="Home"
-                isSelected={selectedItem === 'home'}
-                onClick={() => setSelectedItem('home')}
+                isSelected={path === '/'}
+                onClick={() => {
+                    setSelectedItem('home');
+                    window.location.href = '/';
+                }}
             ></SideMenuItem>
             <SideMenuItem
-                image={selectedItem === 'courses' ? CoursesIconSelected : CoursesIcon}
+                image={path === '/courses' ? CoursesIconSelected : CoursesIcon}
                 text="Courses"
-                isSelected={selectedItem === 'courses'}
-                onClick={() => setSelectedItem('courses')}
+                isSelected={path === '/courses'}
+                onClick={() => {
+                    setSelectedItem('courses');
+                    window.location.href = '/courses';
+                }}
             ></SideMenuItem>
             <SideMenuItem
-                image={selectedItem === 'reports' ? ReviewIconSelected : ReviewIcon}
+                image={path === '/reports' ? ReviewIconSelected : ReviewIcon}
                 text="Reports"
-                isSelected={selectedItem === 'reports'}
-                onClick={() => setSelectedItem('reports')}
+                isSelected={path === '/reports'}
+                onClick={() => {
+                    setSelectedItem('reports');
+                    window.location.href = '/reports';
+                }}
             ></SideMenuItem>
             <SideMenuItem
-                image={selectedItem === 'library' ? LibraryIconSelected : LibraryIcon}
+                image={path === '/library' ? LibraryIconSelected : LibraryIcon}
                 text="Library"
-                isSelected={selectedItem === 'library'}
-                onClick={() => setSelectedItem('library')}
+                isSelected={path === '/library'}
+                onClick={() => {
+                    setSelectedItem('library');
+                    window.location.href = '/library';
+                }}
             ></SideMenuItem>
 
             <div className="SideMenu__card">
