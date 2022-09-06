@@ -1,11 +1,22 @@
 .ChooseCorrectOptionQuestion {
-    width: 30%;
+    width: 35%;
+    display: flex;
+    height: 70%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    .container {
+        width: 100%;
+    }
     &__question-container {
         display: flex;
         align-items: flex-start;
+        width: 100%;
     }
     .title {
         font-weight: 500;
+        margin-bottom: 1.5rem;
+        
     }
     &__question {
         background-color: #ffffff;
@@ -14,14 +25,18 @@
         box-shadow: 0px 0px 103px 0px rgba(0,0,0,0.07);
         width: 100%;
         padding: 5%;
+        height: 100%;
         border-radius: 10px;
         display: flex;
         align-items: center;
+        justify-content: center;
     }
-    .question-sentence {
-        
+    &__question--selected {
+        pointer-events: none;
     }
 }
+
+
 
 .AnswerCard {
     -webkit-box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.07);
@@ -36,6 +51,7 @@
     white-space: nowrap; 
     
 }
+
 .AnswerCard-blue {
     -webkit-box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.07);
     -moz-box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.07);
@@ -44,6 +60,7 @@
     width: fit-content;
     border-radius: 10px;
     background-color: #4D92FB;
+    color: #ffffff;
     cursor: pointer;
     margin: 0 0.5rem;
     white-space: nowrap; 
@@ -56,20 +73,42 @@
     width: fit-content;
     border-radius: 10px;
     background-color: #FF3E3E;
+    color: #ffffff;
     cursor: pointer;
     margin: 0 0.5rem;
     white-space: nowrap; 
 }
-.AnswerCard-notclickable {
-    -webkit-box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.07);
-    -moz-box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.07);
-    box-shadow: 0px 0px 17px 0px rgba(0,0,0,0.07);
-    padding: 2%;
-    width: fit-content;
-    border-radius: 10px;
+.modal-and-button {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.continue-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #4D92FB;
     cursor: pointer;
-    margin: 0 0.5rem;
-    white-space: nowrap; 
-    pointer-events: none;
-    cursor: not-allowed;
+    width: 100%;
+    padding: 3% 0;
+    color: #ffffff;
+    border-radius: 10px;
+    margin-top: 2rem;
+    transition: 0.3s ease;
+    @media screen and (max-width: 767px) {
+        width: 75%;
+        padding: 3% 0;
+    }
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+        width: 40%;
+        padding: 2% 0;
+    }
+
+}
+.continue-button:hover {
+    transform: scale(1.02);
+
 }

@@ -34,12 +34,12 @@ const SideMenuItem = ({ image, text, isSelected, onClick }: SideMenuItemProps) =
 
 const SideMenu = ({ label }: SideMenuProps) => {
     const [selectedItem, setSelectedItem] = useState('home');
-    const [path, setPath] = useState<'/' | '/courses' | '/reports' | '/library'>('/');
+    const [path, setPath] = useState<'/home' | '/courses' | '/reports' | '/library'>('/home');
 
     useEffect(() => {
         switch (location.pathname) {
             case '/':
-                return setPath('/');
+                return setPath('/home');
             case '/courses':
                 return setPath('/courses');
             case '/reports':
@@ -58,12 +58,12 @@ const SideMenu = ({ label }: SideMenuProps) => {
                 <span>Carna</span>
             </div>
             <SideMenuItem
-                image={path === '/' ? HomeIconSelected : HomeIcon}
+                image={path === '/home' ? HomeIconSelected : HomeIcon}
                 text="Home"
-                isSelected={path === '/'}
+                isSelected={path === '/home'}
                 onClick={() => {
                     setSelectedItem('home');
-                    window.location.href = '/';
+                    window.location.href = '/home';
                 }}
             ></SideMenuItem>
             <SideMenuItem

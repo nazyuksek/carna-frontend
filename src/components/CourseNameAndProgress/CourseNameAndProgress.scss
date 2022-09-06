@@ -1,6 +1,9 @@
 .CourseNameAndProgress {
     padding: 2% 5%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     &__name-container {
         display: flex;
         align-items: center;
@@ -23,9 +26,13 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            transition: 0.3s ease;
             img {
                 width: 85%;
             }
+        }
+        .cross-container:hover {
+            transform: scale(1.1);
         }
         
     }
@@ -33,7 +40,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 1rem 0 0.5rem 0;
+        margin: 2rem 0 1rem 0;
         .progress-bar {
             position: relative;
             height: 8px;

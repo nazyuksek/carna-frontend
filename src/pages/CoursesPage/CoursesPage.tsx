@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './CoursesPage.scss';
-import { useLocation } from 'react-router-dom';
-import SideMenu from '../../components/SideMenu/SideMenu';
 import ArrowIcon from '../../assets/svg/BlackArrow.svg';
 import BlueBook from '../../assets/png/BlueBook.png';
 import DarkGrayBook from '../../assets/png/DarkGrayBook.png';
@@ -10,6 +8,7 @@ import YellowBook from '../../assets/png/YellowBook.png';
 import TeachingImage from '../../assets/png/image.png';
 import BackArrow from '../../assets/svg/BackArrow.svg';
 import CourseImage from '../../assets/png/CourseImage.png';
+import QuestionPage from '../QuestionPage/QuestionPage';
 
 interface CourseCardProps {
     image: string;
@@ -30,8 +29,13 @@ const CoursesPage = () => {
         courseName: '',
         outcomes: ['']
     });
+    const [courseStarted, setCourseStarted] = useState<boolean>(false);
 
-    const chooseImage = () => {};
+    useEffect(() => {
+        if (courseStarted) {
+            window.location.href = '/course';
+        }
+    }, [courseStarted]);
 
     const CourseModal = ({ name, moduleOutcomes }: CourseModalProps) => {
         return (
@@ -53,7 +57,15 @@ const CoursesPage = () => {
                             ))}
                         </ul>
                     </div>
-                    <div className="continue-button">Continue</div>
+                    <div
+                        className="continue-button"
+                        onClick={() => {
+                            setCourseStarted(true);
+                            setCoursesModalOpen(false);
+                        }}
+                    >
+                        Continue
+                    </div>
                 </div>
             </div>
         );

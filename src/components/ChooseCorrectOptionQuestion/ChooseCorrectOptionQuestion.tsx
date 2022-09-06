@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { updateTypePredicateNodeWithModifier } from 'typescript';
 import QuestionPage from '../../pages/QuestionPage/QuestionPage';
+import AnswerModal from '../AnswerModal/AnswerModal';
 import './ChooseCorrectOptionQuestion.scss';
 
 export interface ChooseCorrectOptionQuestionProps {
@@ -9,53 +10,51 @@ export interface ChooseCorrectOptionQuestionProps {
     question: string;
     options: string;
     answers: string;
+    onClick: () => void;
 }
 
 interface AnswerCardProps {
     sentence: string;
-    isRightAnswer: boolean;
+    onClick: () => void;
+    isSelected: boolean;
 }
-
-const AnswerCard = ({ sentence, isRightAnswer }: AnswerCardProps) => {
-    const [isTrueCard, setTrueCard] = useState<boolean | null>(null);
-
-    const [isClickable, setClickable] = useState<boolean>(true);
-
-    const onClick = () => {
-        if (isRightAnswer) {
-            setTrueCard(true);
-        } else {
-            setTrueCard(false);
-        }
-        setClickable(false);
-    };
-
-    const chooseClassName = () => {
-        if (isTrueCard === null) {
-            return 'AnswerCard';
-        } else if (isTrueCard) {
-            return 'AnswerCard-blue AnswerCard-notclickable';
-        } else {
-            return 'AnswerCard-red AnswerCard-notclickable';
-        }
-    };
-
-    return (
-        <div className={chooseClassName()} onClick={onClick}>
-            <span>{sentence}</span>
-        </div>
-    );
-};
 
 const ChooseCorrectOptionQuestion = ({
     label,
     title,
     question,
     options,
-    answers
+    answers,
+    onClick
 }: ChooseCorrectOptionQuestionProps) => {
     const [splittedQuestion, setSplittedQuestion] = useState<string[]>([]);
     const [answer, setAnswer] = useState<string>('');
+    const [isFirstCardSelected, setIsFirstCardSelected] = useState<boolean>(false);
+    const [isSecondCardSelected, setIsSecondCardSelected] = useState<boolean>(false);
+    const [isAnswerChoosen, setIsAnswerChoosen] = useState<boolean>(false);
+    const [isAnswerCorrect, setIsAnswerCorrect] = useState<boolean | null>(null);
+    const [count, setCount] = useState(0);
+
+    const AnswerCard = ({ sentence, onClick, isSelected }: AnswerCardProps) => {
+        const chooseClass = () => {
+            if (!isSelected) {
+                return 'AnswerCard';
+            } else {
+                if (isAnswerCorrect === null) {
+                    return 'AnswerCard-blue';
+                } else if (isAnswerCorrect === false) {
+                    return 'AnswerCard-red';
+                } else {
+                    return 'AnswerCard-blue';
+                }
+            }
+        };
+        return (
+            <div className={chooseClass()} onClick={onClick}>
+                <span>{sentence}</span>
+            </div>
+        );
+    };
 
     const splitQuestion = (): string[] => {
         return question.split('#');
@@ -69,6 +68,14 @@ const ChooseCorrectOptionQuestion = ({
         return [options.split('\\u0022')[1], options.split('\\u0022')[3]];
     };
 
+    const isCorrectAnswer = (index: number) => {
+        if (getOptions()[index] === getAnswer()) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
     useEffect(() => {
         setSplittedQuestion(splitQuestion());
         setAnswer(getAnswer());
@@ -76,21 +83,71 @@ const ChooseCorrectOptionQuestion = ({
 
     return (
         <div className="ChooseCorrectOptionQuestion" data-testid="ChooseCorrectOptionQuestion">
-            <div className="ChooseCorrectOptionQuestion__question-container">
-                <span className="title">{title}</span>
+            <div className="container">
+                <div className="ChooseCorrectOptionQuestion__question-container">
+                    <span className="title">{title}</span>
+                </div>
+                <div
+                    className={
+                        isAnswerChoosen
+                            ? 'ChooseCorrectOptionQuestion__question ChooseCorrectOptionQuestion__question--selected'
+                            : 'ChooseCorrectOptionQuestion__question'
+                    }
+                >
+                    <span className="question-sentence">{splittedQuestion[0]}</span>
+                    <AnswerCard
+                        isSelected={isFirstCardSelected}
+                        sentence={getOptions()[0]}
+                        onClick={() => {
+                            setIsAnswerChoosen(true);
+                            setIsFirstCardSelected(true);
+                            setIsSecondCardSelected(false);
+                        }}
+                    ></AnswerCard>
+                    <span>/</span>
+                    <AnswerCard
+                        isSelected={isSecondCardSelected}
+                        sentence={getOptions()[1]}
+                        onClick={() => {
+                            setIsAnswerChoosen(true);
+                            setIsFirstCardSelected(false);
+                            setIsSecondCardSelected(true);
+                        }}
+                    ></AnswerCard>
+                    <span className="question-sentence">{splittedQuestion[1]}</span>
+                </div>
             </div>
-            <div className="ChooseCorrectOptionQuestion__question">
-                <span className="question-sentence">{splittedQuestion[0]}</span>
-                <AnswerCard
-                    isRightAnswer={getOptions()[0] === getAnswer()}
-                    sentence={getOptions()[0]}
-                ></AnswerCard>
-                <span>/</span>
-                <AnswerCard
-                    isRightAnswer={getOptions()[1] === getAnswer()}
-                    sentence={getOptions()[1]}
-                ></AnswerCard>
-                <span className="question-sentence">{splittedQuestion[1]}</span>
+            <div className="modal-and-button">
+                {isAnswerCorrect !== null && (
+                    <AnswerModal
+                        isAnswerCorrect={isAnswerCorrect}
+                        correctAnswer={getAnswer()}
+                    ></AnswerModal>
+                )}
+                <div
+                    className="continue-button"
+                    onClick={() => {
+                        setCount(count + 1);
+                        if (isFirstCardSelected) {
+                            if (isCorrectAnswer(0)) {
+                                setIsAnswerCorrect(true);
+                            } else {
+                                setIsAnswerCorrect(false);
+                            }
+                        } else {
+                            if (isCorrectAnswer(1)) {
+                                setIsAnswerCorrect(true);
+                            } else {
+                                setIsAnswerCorrect(false);
+                            }
+                        }
+                        if (count == 1) {
+                            onClick();
+                        }
+                    }}
+                >
+                    Continue
+                </div>
             </div>
         </div>
     );
