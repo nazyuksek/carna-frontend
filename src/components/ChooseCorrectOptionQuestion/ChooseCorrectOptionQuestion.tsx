@@ -68,6 +68,15 @@ const ChooseCorrectOptionQuestion = ({
         return [options.split('\\u0022')[1], options.split('\\u0022')[3]];
     };
 
+    //split the second part of question
+    const getFirstPart = (): string[] => {
+        return splittedQuestion[1].split(' ');
+    };
+
+    const getSecondPart = (): string[] => {
+        return splittedQuestion[1].split(' ');
+    };
+
     const isCorrectAnswer = (index: number) => {
         if (getOptions()[index] === getAnswer()) {
             return true;
@@ -94,7 +103,7 @@ const ChooseCorrectOptionQuestion = ({
                             : 'ChooseCorrectOptionQuestion__question'
                     }
                 >
-                    <span className="question-sentence">{splittedQuestion[0]}</span>
+                    <div className="question-sentence">{splittedQuestion[0]}</div>
                     <AnswerCard
                         isSelected={isFirstCardSelected}
                         sentence={getOptions()[0]}
@@ -114,7 +123,7 @@ const ChooseCorrectOptionQuestion = ({
                             setIsSecondCardSelected(true);
                         }}
                     ></AnswerCard>
-                    <span className="question-sentence">{splittedQuestion[1]}</span>
+                    <div className="question-sentence">{splittedQuestion[1]}</div>
                 </div>
             </div>
             <div className="modal-and-button">

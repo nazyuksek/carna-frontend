@@ -15,12 +15,14 @@ const FillInTheBlanksQuestion = ({ label, title, onClick }: FillInTheBlanksQuest
                     <span className="title">{title}</span>
                 </div>
                 <div className="FillInTheBlanksQuestion__question">
-                    <div>
-                        <span>A: </span>
-                        <input type="text" />
+                    <div className="first-part">
+                        <div>
+                            <span>A: </span>
+                            <input type="text" />
+                        </div>
                         <span> the Taylors at the airport?</span>
                     </div>
-                    <div>
+                    <div className="second-part">
                         <span>B: Yes, they </span>
                         <input type="text" />
                     </div>

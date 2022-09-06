@@ -5,9 +5,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    .container {
-        width: 100%;
+    @media screen and (max-width: 1023px) {
+        width: 90%;
     }
+    // .container {
+    //     width: 100%;
+    // }
     &__question-container {
         display: flex;
         align-items: flex-start;
@@ -23,14 +26,17 @@
         -webkit-box-shadow: 0px 0px 103px 0px rgba(0,0,0,0.07);
         -moz-box-shadow: 0px 0px 103px 0px rgba(0,0,0,0.07);
         box-shadow: 0px 0px 103px 0px rgba(0,0,0,0.07);
-        width: 100%;
-        padding: 5%;
+        width: 500px;
+        padding: 5% 0;
         height: 100%;
         border-radius: 10px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
+        @media screen and (max-width: 767px) {
+            width: 350px;
+        }
         .question {
             font-weight: 600;
             
@@ -45,6 +51,9 @@
             display: flex;
             width: 50%;
             justify-content: space-between;
+            @media screen and (max-width: 767px) {
+                width: 70%;
+            }
             .single-button--selected {
                 -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.08);
                 -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.08);
@@ -88,10 +97,13 @@
         
     }
     .modal-and-button {
-        width: 60%;
+        width: 70%;
         display: flex;
         align-items: center;
         flex-direction: column;
+        @media screen and (max-width: 767px) {
+            width: 100%;
+        }
         
     }
     .continue-button {
@@ -108,11 +120,11 @@
         transition: 0.3s ease;
         @media screen and (max-width: 767px) {
             width: 75%;
-            padding: 3% 0;
+            padding: 4% 0;
         }
         @media screen and (min-width: 768px) and (max-width: 1023px) {
-            width: 40%;
-            padding: 2% 0;
+            width: 100%;
+            padding: 5% 0;
         }
     
     }
