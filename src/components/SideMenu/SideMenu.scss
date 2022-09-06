@@ -1,0 +1,104 @@
+.SideMenu {
+    width: 400px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @media screen and (max-width: 1024px) {
+        display: none;
+    }
+    //background-color: rgba(255, 223, 0, 0.1);  
+    -webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.25);
+    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.25);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    overflow: hidden; 
+    .logo-container {
+        display: flex;
+        align-items: center;  
+        width: 85%;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color:rgba(0, 0, 0, 0.5);
+        margin: 3rem 0 5rem 0;
+        img {
+            width: 18%;
+            margin: 0 0.75rem 0 2rem;
+        }
+    }
+&__card {
+    height: 55%;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    justify-content: center;
+    
+}
+    .app-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 30%;
+        position: relative;
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+        -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+        font-weight: 600;
+        border-radius: 20px;
+        padding: 0 8%;
+        font-size: 0.85rem;
+        transition: 0.3s ease;
+
+        //background-color: rgba(255, 223, 0, 0.1);
+        .arrow-img {
+            margin-top: 1rem;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        
+        .book-img {
+            position: absolute;
+            top: -80px;
+            left: -10px;
+            z-index: 2;
+        }
+    }
+    .app-card:hover {
+        background-color: rgba(77, 146, 251, 0.05);
+    }
+    .arrow-img:hover {
+        transform: scale(1.15);
+    }
+    .SideMenuItem {
+        display: flex;
+        align-items: center;
+        width: 80%;
+        padding: 5% 3%;
+        border-radius: 10px;
+        font-weight: 500;
+        cursor: pointer;
+        img {
+            margin: 0 1.75rem 0 2rem;
+            // transition: 0.1s ease;  
+            width: 10%;
+        }
+        
+    }
+    .SideMenuItem-selected {
+        display: flex;
+        align-items: center;
+        width: 80%;
+        padding: 5% 3%;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 500;
+        background-color: rgba(77, 146, 251, 0.1);
+        color: #4D92FB;
+        img {
+            margin: 0 1.75rem 0 2rem;
+            width: 10%;
+        }
+    }
+}

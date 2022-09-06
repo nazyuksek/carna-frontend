@@ -1,0 +1,202 @@
+.SignInScreen {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    @media screen and (min-width: 426px) and (max-width: 1023px) {
+        align-items: flex-start;
+        padding: 10%;
+    }  
+    .yellow-img {
+        position: absolute;
+        left: -10%;
+        top: 0;
+        @media screen and (max-width: 1023px) {
+            display: none;
+        } 
+        @media screen and (min-width: 1024px) and (max-width: 1299px) {
+            left: -30%;
+        }     
+    }
+    .blue-img {
+        position: absolute;
+        right: -5%;
+        bottom: -2%;
+        @media screen and (max-width: 1023px) {
+            display: none;
+        }     
+        @media screen and (min-width: 1024px) and (max-width: 1299px) {
+            right: -25%;
+        }   
+    }
+    .yellow-img-mobile {
+        position: absolute;
+        left: -15%;
+        top: 0;
+        @media screen and (min-width: 426px) and (max-width: 1023px) {
+            left: 0;
+        } 
+        @media screen and (min-width: 1024px) {
+            display: none;
+        }    
+    }
+    .blue-img-mobile {
+        position: absolute;
+        right: -5%;
+        top: 3%;
+        @media screen and (min-width: 426px) and (max-width: 1023px) {
+            right: 0;
+        } 
+        @media screen and (min-width: 1024px) {
+            display: none;
+        }    
+    }
+    &__logo {
+        margin-bottom: 2rem;
+        @media screen and (max-width: 1023px) {
+            display: none;
+        } 
+    }
+    &__title-container {
+        display: flex;
+        align-items: flex-start;
+        width: 25%;
+        text-align: left;
+        margin-bottom: 4rem;
+        @media screen and (max-width: 1023px) {
+            width: 60%;
+            margin-bottom: 2rem;
+            margin-top: 60%;
+        }  
+        
+        .title-controller {
+            width: 60%;
+        }
+        .title {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+        
+    }
+    &__inputs {
+        width: 25%;
+        @media screen and (max-width: 425px) {
+            width: 80%;
+        } 
+        @media screen and (min-width: 426px) and (max-width: 1023px) {
+            width: 60%;   
+        }  
+       .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            @media screen and (max-width: 1023px) {
+                margin-bottom: 1rem;
+            }
+            .input-and-image {
+                position: relative;
+                width: 100%;
+                img {
+                    position: absolute;
+                    right: 0.5rem;
+                }
+            }
+            input {
+                width: 100%;
+                height: 1.25rem;
+                border-top: none;
+                border-left: none;
+                border-right: none;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+                padding: 0.5rem 0;
+                &:focus-visible {
+                    outline: none;
+                }
+            }
+            label {
+                color: rgba(0, 0, 0, 0.5);
+                margin-bottom: 0.5rem;
+            }
+       } 
+    }
+    .forgot-password {
+        display: flex;
+        justify-content: flex-start;
+        width: 25%;
+        @media screen and (max-width: 1023px) {
+            width: 80%;
+            margin-bottom: 1rem;
+        } 
+        text-decoration: underline;
+        margin-bottom: 2rem;
+        cursor: pointer;
+    }
+    .sign-up-options {
+        margin-bottom: 2rem;
+        width: 25%;
+        @media screen and (max-width: 1023px) {
+            width: 80%;
+            margin-bottom: 1rem;
+        } 
+        @media screen and (min-width: 426px) and (max-width: 1023px) {
+            width: 60%;   
+        } 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: rgba(0, 0, 0, 0.5);
+        .options {
+            display: flex;
+            width: 30%;
+            justify-content: space-between;
+            @media screen and (max-width: 1023px) {
+                width: 40%; 
+            } 
+            
+            div {
+                padding: 1rem;
+                cursor: pointer;
+                border-radius: 10px;
+                background-color: #FBFBFB;
+            }
+        }
+    }
+    .button {
+        width: 25%;
+        @media screen and (max-width: 425px) {
+            width: 80%;
+            margin-bottom: 1rem;
+        }
+        @media screen and (min-width: 426px) and (max-width: 1023px) {
+            width: 60%;   
+        }  
+        background-color: #4D92FB;
+        color: #ffffff;
+        padding: 1rem 0;
+        cursor: pointer;
+        border-radius: 15px;
+        margin-bottom: 2rem;
+    }
+    .not-user {
+        width: 25%;
+        @media screen and (max-width: 1023px) {
+            width: 85%;
+        }
+        @media screen and (min-width: 767px) and (max-width: 1023px) {
+            justify-content: flex-start;
+        }
+        display: flex;  
+        align-items: center;
+        justify-content: center;
+        .sign-up {
+            color: #4D92FB;
+            cursor: pointer;
+            margin-left: 1rem;
+        }      
+    }
+}
