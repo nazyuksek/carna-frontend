@@ -11,6 +11,7 @@ import CoursesIconSelected from '../../assets/svg/courses-selected.svg';
 import ReviewIconSelected from '../../assets/svg/reports-selected.svg';
 import ArrowIcon from '../../assets/svg/arrow.svg';
 import BookImage from '../../assets/png/book.png';
+import { useAuthStore } from '../../store/store';
 
 export interface SideMenuProps {
     label?: string;
@@ -50,7 +51,6 @@ const SideMenu = ({ label }: SideMenuProps) => {
                 break;
         }
     }, [location]);
-
     return (
         <div className="SideMenu" data-testid="SideMenu">
             <div className="logo-container">

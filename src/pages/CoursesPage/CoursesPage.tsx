@@ -9,6 +9,7 @@ import TeachingImage from '../../assets/png/image.png';
 import BackArrow from '../../assets/svg/BackArrow.svg';
 import CourseImage from '../../assets/png/CourseImage.png';
 import QuestionPage from '../QuestionPage/QuestionPage';
+import { useAuthStore } from '../../store/store';
 
 interface CourseCardProps {
     image: string;
@@ -24,6 +25,11 @@ interface CourseModalProps {
 }
 
 const CoursesPage = () => {
+    const { accessToken, refreshToken, logoutUser } = useAuthStore();
+
+    useEffect(() => {
+        console.log(accessToken);
+    }, []);
     const [isCoursesModalOpen, setCoursesModalOpen] = useState(false);
     const [selectedCourse, setSelectedCourse] = useState({
         courseName: '',
@@ -139,7 +145,17 @@ const CoursesPage = () => {
             data-testid="CoursesPage"
         >
             <div className="CoursesPage__courses">
-                <span className="CoursesPage__title">Assigned Courses</span>
+                <div className="title-and-button">
+                    <span className="CoursesPage__title">Assigned Courses</span>
+                    <div
+                        onClick={() => {
+                            logoutUser();
+                            window.location.href = '/login';
+                        }}
+                    >
+                        Log Out
+                    </div>
+                </div>
                 <div className="course-cards-container">
                     <div className="course-cards-row">
                         <CourseCard

@@ -15,17 +15,24 @@ import { useAuthStore } from '../../store/store';
 const SignInScreen = () => {
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const { setAccessToken, accessToken } = useAuthStore();
+    const {
+        setAccessToken,
+        accessToken,
+        setRefreshToken,
+        setAuthenticatedUser,
+        setLoggedIn,
+        isLoggedIn
+    } = useAuthStore();
 
     const handleLogin = async () => {
         let res = await login({ email, password })
             .then((res) => {
                 setAccessToken(res.accessToken);
-                console.log(accessToken);
-                if (accessToken !== '') {
-                    alert();
-                    window.location.href = '/home';
-                }
+                setRefreshToken(res.refreshToken);
+                setAuthenticatedUser(res.authenticatedUser);
+                setLoggedIn(true);
+                window.location.pathname = '/home';
+                console.log(isLoggedIn);
             })
             .catch((e) => console.log('e:' + e));
     };

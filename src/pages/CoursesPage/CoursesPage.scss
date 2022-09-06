@@ -1,6 +1,26 @@
 .CoursesPage {
     display: flex;
     width: 100%; 
+    .title-and-button {
+        display: flex;
+        width: 95%;
+        justify-content: space-between;
+        div {
+            -webkit-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.25);
+            -moz-box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.25);
+            box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.25);
+            padding: 1% 2%;
+            border-radius: 1rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.3s ease;  
+            color: rgba(77, 146, 251, 0.8);
+        }
+        div:hover {
+            transform: scale(1.05);
+            color: #4D92FB;
+        }
+    }
     &__courses {
         padding: 3rem;   
         width: 100%;
@@ -57,6 +77,7 @@
             color: #4D92FB;
             @media screen and (max-width: 767px) {
                 font-size: 0.8rem;
+                background-color: rgba(77, 146, 251, 0.05);
 
             }
             span {

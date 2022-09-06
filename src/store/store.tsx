@@ -19,32 +19,46 @@ type TAuth = {
     refreshToken: string;
     accessToken: string;
     authenticatedUser: TAuthUser;
+    isLoggedIn: boolean;
     setAccessToken: (accessToken: string) => void;
     setRefreshToken: (refreshToken: string) => void;
     setAuthenticatedUser: (authenticatedUser: TAuthUser) => void;
+    setLoggedIn: (isLoggedIn: boolean) => void;
+    logoutUser: () => void;
 };
 
-export const useAuthStore = create<TAuth>((set) => ({
-    accessToken: '',
-    refreshToken: '',
-    authenticatedUser: {
-        id: '',
-        appUserId: '',
-        email: '',
-        name: '',
-        surname: '',
-        role: '',
-        accountState: '',
-        accountCreated: '',
-        schoolId: '',
-        hasClassroms: false
-    },
-    setAccessToken: (accessToken: string) => set((state: any) => ({ accessToken: accessToken })),
-    setRefreshToken: (refreshToken: string) =>
-        set((state: any) => ({ refreshToken: refreshToken })),
-    setAuthenticatedUser: (authenticatedUser: object) =>
-        set((state: any) => ({
-            authenticatedUser: { ...state.authenticatedUser, authenticatedUser }
-        })),
-    logoutUser: () => set((state: any) => ({ accessToken: '', refreshToken: '' }))
-}));
+export const useAuthStore = create<TAuth, [['zustand/persist', TAuth]]>(
+    persist(
+        (set) => ({
+            accessToken: '',
+            refreshToken: '',
+            isLoggedIn: false,
+            authenticatedUser: {
+                id: '',
+                appUserId: '',
+                email: '',
+                name: '',
+                surname: '',
+                role: '',
+                accountState: '',
+                accountCreated: '',
+                schoolId: '',
+                hasClassroms: false
+            },
+            setAccessToken: (accessToken: string) =>
+                set((state) => ({ ...state, accessToken: accessToken })),
+            setRefreshToken: (refreshToken: string) =>
+                set((state) => ({ ...state, refreshToken: refreshToken })),
+            setLoggedIn: (isLoggedIn: boolean) =>
+                set((state) => ({ ...state, isLoggedIn: isLoggedIn })),
+            setAuthenticatedUser: (authenticatedUser: object) =>
+                set((state: any) => ({
+                    authenticatedUser: { ...state.authenticatedUser, authenticatedUser }
+                })),
+            logoutUser: () => set({ accessToken: '', refreshToken: '', isLoggedIn: false })
+        }),
+        {
+            name: 'auth-storage'
+        }
+    )
+);

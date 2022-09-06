@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useAuthStore } from '../../store/store';
 import './HomePage.scss';
 
 const HomePage = () => {

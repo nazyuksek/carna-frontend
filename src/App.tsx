@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
 import NavBar from './components/NavBar/NavBar';
 import SideMenu from './components/SideMenu/SideMenu';
@@ -13,21 +13,19 @@ import ProfileImageComponent from './components/ProfileImageComponent/ProfileIma
 import { useAuthStore } from './store/store';
 
 function App() {
-    const { accessToken, refreshToken } = useAuthStore();
+    const { accessToken, refreshToken, isLoggedIn } = useAuthStore();
 
-    // const ProtectedRoute = ({ children }: any) => {
-    //     console.log(accessToken);
-    //     alert();
-    //     if (accessToken === '') {
-    //         return <Navigate to="/login" />;
-    //     }
-    //     console.log(children);
-    //     return children;
-    // };
+    const ProtectedRoute = ({ children }: any) => {
+        if (!isLoggedIn) {
+            return <Navigate to="/login" />;
+        }
+        console.log(children);
+        return children;
+    };
 
     return (
         <div className="App">
-            {/* {accessToken !== '' && (
+            {isLoggedIn && window.location.pathname !== '/course' && (
                 <>
                     <SideMenu></SideMenu>
                     <NavBar></NavBar>
@@ -35,7 +33,8 @@ function App() {
             )}
             <BrowserRouter>
                 <Routes>
-                    <Route path="/login" element={<SignInScreen />}></Route>
+                    {!isLoggedIn && <Route path="/" element={<SignInScreen />}></Route>}
+                    {!isLoggedIn && <Route path="/login" element={<SignInScreen />}></Route>}
                     <Route
                         path="/home"
                         element={
@@ -49,6 +48,14 @@ function App() {
                         element={
                             <ProtectedRoute>
                                 <CoursesPage />
+                            </ProtectedRoute>
+                        }
+                    ></Route>
+                    <Route
+                        path="/course"
+                        element={
+                            <ProtectedRoute>
+                                <QuestionPage />
                             </ProtectedRoute>
                         }
                     ></Route>
@@ -69,22 +76,33 @@ function App() {
                         }
                     ></Route>
                 </Routes>
-            </BrowserRouter> */}
-            <BrowserRouter>
-                {window.location.pathname !== '/course' && (
+            </BrowserRouter>
+
+            {/* <BrowserRouter>
+                {window.location.pathname !== '/course' && accessToken && (
                     <>
                         <SideMenu></SideMenu>
                         <NavBar></NavBar>
                     </>
                 )}
                 <Routes>
-                    <Route path="/" element={<HomePage />}></Route>
-                    <Route path="/courses" element={<CoursesPage />}></Route>
-                    <Route path="/reports" element={<ReportsPage />}></Route>
-                    <Route path="/library" element={<LibraryPage />}></Route>
-                    <Route path="/course" element={<QuestionPage />}></Route>
+                    {!accessToken && (
+                        <>
+                            <Route path="/" element={<SignInScreen />}></Route>
+                            <Route path="/courses" element={<CoursesPage />}></Route>
+                        </>
+                    )}
+                    {accessToken && (
+                        <>
+                            <Route path="/" element={<HomePage />}></Route>
+                            <Route path="/courses" element={<CoursesPage />}></Route>
+                            <Route path="/reports" element={<ReportsPage />}></Route>
+                            <Route path="/library" element={<LibraryPage />}></Route>
+                            <Route path="/course" element={<QuestionPage />}></Route>
+                        </>
+                    )}
                 </Routes>
-            </BrowserRouter>
+            </BrowserRouter> */}
 
             {/* <QuestionPage></QuestionPage> */}
 

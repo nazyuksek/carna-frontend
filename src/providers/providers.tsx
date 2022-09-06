@@ -35,6 +35,7 @@ export const login = (info: TLoginInput) => {
                 // useAuthStore().setAccessToken(res.data.accessToken);
                 // useAuthStore().setRefreshToken(res.data.refreshToken);
                 // useAuthStore().setAuthenticatedUser(res.data.authenticatedUser);
+                // useAuthStore().setLoggedIn(true);
                 // console.log('Promise data:' + res.data);
                 resolve(res.data);
             })
