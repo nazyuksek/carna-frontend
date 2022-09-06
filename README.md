@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-It is a responsive frontend application of Carna mobile application, developed using React with Typescript, with the following features: 
+It is a responsive frontend application of Carna mobile application, implemented using React with Typescript, with the following features: 
 
   - A login page where you can login with authorized users
   - A side menu with four different options (Home, Courses, Reports, Library)
