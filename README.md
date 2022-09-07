@@ -15,6 +15,7 @@ In this project;
 
   - eslint and prettier (to control the format of the entire application),
   - React CLI with 2 templates, a component template and a screen template,
+  - zustand library for global state management
   - and SCSS 
   
  are used.
