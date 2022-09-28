@@ -77,37 +77,6 @@ function App() {
                     ></Route>
                 </Routes>
             </BrowserRouter>
-
-            {/* <BrowserRouter>
-                {window.location.pathname !== '/course' && accessToken && (
-                    <>
-                        <SideMenu></SideMenu>
-                        <NavBar></NavBar>
-                    </>
-                )}
-                <Routes>
-                    {!accessToken && (
-                        <>
-                            <Route path="/" element={<SignInScreen />}></Route>
-                            <Route path="/courses" element={<CoursesPage />}></Route>
-                        </>
-                    )}
-                    {accessToken && (
-                        <>
-                            <Route path="/" element={<HomePage />}></Route>
-                            <Route path="/courses" element={<CoursesPage />}></Route>
-                            <Route path="/reports" element={<ReportsPage />}></Route>
-                            <Route path="/library" element={<LibraryPage />}></Route>
-                            <Route path="/course" element={<QuestionPage />}></Route>
-                        </>
-                    )}
-                </Routes>
-            </BrowserRouter> */}
-
-            {/* <QuestionPage></QuestionPage> */}
-
-            {/* <ProfileImageComponent></ProfileImageComponent> */}
-            {/* <SignInScreen></SignInScreen> */}
         </div>
     );
 }

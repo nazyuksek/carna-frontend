@@ -129,7 +129,7 @@ const ChooseCorrectOptionQuestion = ({
             <div className="modal-and-button">
                 {isAnswerCorrect !== null && (
                     <AnswerModal
-                        isAnswerCorrect={isAnswerCorrect}
+                        isAnswerCorrect={isAnswerChoosen && isAnswerCorrect ? true : false}
                         correctAnswer={getAnswer()}
                     ></AnswerModal>
                 )}

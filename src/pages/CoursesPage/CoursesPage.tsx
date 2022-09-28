@@ -67,7 +67,6 @@ const CoursesPage = () => {
                         className="continue-button"
                         onClick={() => {
                             setCourseStarted(true);
-                            setCoursesModalOpen(false);
                         }}
                     >
                         Continue
