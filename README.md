@@ -1,4 +1,5 @@
 
+## Details of the project
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -15,6 +16,7 @@ In this project;
 
   - eslint and prettier (to control the format of the entire application),
   - React CLI with 2 templates, a component template and a screen template,
+  - zustand library for global state management
   - and SCSS 
   
  are used.
