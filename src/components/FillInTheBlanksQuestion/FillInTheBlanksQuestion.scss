@@ -69,25 +69,35 @@
 
         }
     }
+    .modal-and-button {
+        width: 70%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        @media screen and (max-width: 767px) {
+            width: 100%;
+        }
+        
+    }
     .continue-button {
         display: flex;
         align-items: center;
         justify-content: center;
         background-color: #4D92FB;
         cursor: pointer;
-        width: 70%;
-        padding: 3% 0;
+        width: 100%;
+        padding: 5% 0;
         color: #ffffff;
         border-radius: 10px;
-        margin-top: 5rem;
+        margin-top: 2rem;
         transition: 0.3s ease;
         @media screen and (max-width: 767px) {
             width: 75%;
-            padding: 3% 0;
+            padding: 4% 0;
         }
         @media screen and (min-width: 768px) and (max-width: 1023px) {
-            width: 60%;
-            
+            width: 100%;
+            padding: 5% 0;
         }
     
     }
