@@ -80,7 +80,7 @@ const TrueFalseQuestion = ({ label, title, trueAnswer, onClick }: TrueFalseQuest
             <div className="modal-and-button">
                 {isAnswerChoosen && (
                     <AnswerModal
-                        isAnswerCorrect={isAnswerCorrect}
+                        isAnswerCorrect={isAnswerChoosen && isAnswerCorrect ? true : false}
                         correctAnswer={trueAnswer}
                     ></AnswerModal>
                 )}
